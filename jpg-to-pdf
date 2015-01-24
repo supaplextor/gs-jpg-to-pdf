@@ -1,0 +1,27 @@
+#!/bin/sh
+# 
+# (C) Scott Edwards Jan 2015 / GPL3 or later
+# http://www.linkedin.com/in/supaplex
+
+output="$1"
+shift
+
+jpgs=""
+while :
+do
+	x="$1"
+	echo "\$1: $1"
+	[ "x" = "x$x" ] && break;
+	shift
+	cow="$jpgs"
+	if [ x = x"$jpgs" ]
+		jpgs="($x) viewJPEG showpage"
+	then
+		jpgs="$cow ($x) viewJPEG showpage"
+	fi
+	echo "\$cow: $cow"
+	echo "\$jpgs: $jpgs"
+done
+
+set -x
+gs -sDEVICE=pdfwrite -o "$output" /usr/share/ghostscript/9.05/lib/viewjpeg.ps -c "$jpgs"
