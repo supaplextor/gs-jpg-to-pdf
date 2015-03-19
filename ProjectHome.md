@@ -1,0 +1,1 @@
+GhostScript shell script converts jpg to pdf pages
